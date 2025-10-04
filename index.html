@@ -2,8 +2,8 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>黃柏彰的個人網頁</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>網路應用程式設計</title>
   <style>
     * {
       margin: 0;
@@ -19,13 +19,11 @@
       transition: background 1s ease, color 1s ease;
     }
 
-    /* 夜晚模式 body */
     body.night {
       background: linear-gradient(to bottom, #0b1a3d 0%, #1a2a6c 70%, #151c3a 100%);
       color: #ccc;
     }
 
-    /* 太陽與月亮共用樣式 */
     .sun, .moon {
       position: fixed;
       top: 50px;
@@ -40,27 +38,20 @@
       transition: opacity 1s ease;
     }
 
-    /* 太陽 */
     .sun {
       background: radial-gradient(circle at center, #FFD700 60%, #FFA500 100%);
       opacity: 1;
     }
 
-    /* 月亮 */
     .moon {
       background: radial-gradient(circle at center, #f0f0f0 60%, #bbb 100%);
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
       opacity: 0;
-      position: fixed;
-      top: 50px;
-      right: 50px;
       width: 80px;
       height: 80px;
-      border-radius: 50%;
       animation: rotateSun 10s linear infinite reverse;
     }
 
-    /* 夜晚模式時月亮顯示，太陽隱藏 */
     body.night .sun {
       opacity: 0;
       pointer-events: none;
@@ -75,7 +66,6 @@
       100% { transform: rotate(360deg); }
     }
 
-    /* 雲朵基礎樣式 */
     .cloud {
       position: fixed;
       background: #fff;
@@ -94,7 +84,6 @@
       transition: background 1s ease;
     }
 
-    /* 雲朵1 */
     .cloud1 {
       width: 120px;
       height: 60px;
@@ -117,7 +106,6 @@
       left: 60px;
     }
 
-    /* 雲朵2 */
     .cloud2 {
       width: 100px;
       height: 50px;
@@ -145,7 +133,6 @@
       100% { transform: translateX(160vw); }
     }
 
-    /* 夜晚模式雲朵變暗 */
     body.night .cloud,
     body.night .cloud:before,
     body.night .cloud:after {
@@ -343,7 +330,6 @@
       }
     }
 
-    /* 夜晚模式切換按鈕 */
     #toggleNight {
       position: fixed;
       top: 10px;
@@ -368,30 +354,37 @@
   </style>
 </head>
 <body>
-  <!-- 夜晚切換按鈕 -->
   <button id="toggleNight" title="切換夜晚模式">🌙 夜晚模式</button>
 
-  <!-- 太陽與月亮 -->
   <div class="sun"></div>
   <div class="moon"></div>
 
-  <!-- 雲朵 -->
   <div class="cloud cloud1"></div>
   <div class="cloud cloud2"></div>
 
   <div class="container">
     <header>
-      <h1>黃柏彰的個人網頁</h1>
+      <h1>網路應用程式設計</h1>
     </header>
 
     <nav>
+      <button onclick="showPage('home')">首頁</button>
       <button onclick="showPage('intro')">自我介紹</button>
       <button onclick="showPage('monitor')">遠端監控</button>
       <button onclick="showPage('health')">健康管理</button>
     </nav>
 
     <main>
-      <section id="intro" class="page active">
+      <section id="home" class="page active">
+        <h2>歡迎來到網路應用程式設計課程</h2>
+        <p>這裡是學習與展示網路應用程式設計相關技術的個人網站。</p>
+        <p>在這裡你可以學到各種程式設計有關的內容。</p>
+        <div class="portfolio-images">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="網路應用程式設計" />
+        </div>
+      </section>
+
+      <section id="intro" class="page">
         <h2>自我介紹</h2>
         <p>大家好，我是黃柏彰，進修部四子四乙，學號 C111252201。</p>
         <p>我畢業於 <strong>高雄高工汽車科</strong>，在校期間學習了許多與機械與技術相關的知識。</p>
@@ -423,7 +416,6 @@
   </div>
 
   <script>
-    // 頁面切換功能
     function showPage(pageId) {
       const pages = document.querySelectorAll('.page');
       pages.forEach(page => page.classList.remove('active'));
@@ -433,11 +425,9 @@
       }
     }
 
-    // 夜晚模式切換按鈕事件
     const toggleBtn = document.getElementById('toggleNight');
     toggleBtn.addEventListener('click', () => {
       document.body.classList.toggle('night');
-      // 切換按鈕文字與圖示
       if(document.body.classList.contains('night')) {
         toggleBtn.textContent = '☀️ 白天模式';
         toggleBtn.title = '切換白天模式';
@@ -449,3 +439,5 @@
   </script>
 </body>
 </html>
+
+

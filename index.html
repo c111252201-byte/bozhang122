@@ -5,12 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>網路應用程式設計</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Microsoft JhengHei', 'Arial', sans-serif;
       background: linear-gradient(to bottom, #87ceeb 0%, #b0e0e6 70%, #f0f8ff 100%);
@@ -18,170 +13,50 @@
       overflow-x: hidden;
       transition: background 1s ease, color 1s ease;
     }
-
     body.night {
       background: linear-gradient(to bottom, #0b1a3d 0%, #1a2a6c 70%, #151c3a 100%);
       color: #ccc;
     }
-
     .sun, .moon {
       position: fixed;
-      top: 50px;
-      right: 50px;
-      width: 100px;
-      height: 100px;
+      top: 50px; right: 50px;
       border-radius: 50%;
-      box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
-      animation: rotateSun 10s linear infinite;
       z-index: 1;
       cursor: pointer;
       transition: opacity 1s ease;
     }
-
     .sun {
+      width: 100px; height: 100px;
       background: radial-gradient(circle at center, #FFD700 60%, #FFA500 100%);
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+      animation: rotateSun 10s linear infinite;
       opacity: 1;
     }
-
     .moon {
+      width: 80px; height: 80px;
       background: radial-gradient(circle at center, #f0f0f0 60%, #bbb 100%);
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-      opacity: 0;
-      width: 80px;
-      height: 80px;
       animation: rotateSun 10s linear infinite reverse;
-    }
-
-    body.night .sun {
       opacity: 0;
-      pointer-events: none;
     }
-
-    body.night .moon {
-      opacity: 1;
-    }
-
-    @keyframes rotateSun {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    .cloud {
-      position: fixed;
-      background: #fff;
-      border-radius: 50%;
-      opacity: 0.8;
-      z-index: 0;
-      transition: background 1s ease, opacity 1s ease;
-    }
-
-    .cloud:before,
-    .cloud:after {
-      content: '';
-      position: absolute;
-      background: #fff;
-      border-radius: 50%;
-      transition: background 1s ease;
-    }
-
-    .cloud1 {
-      width: 120px;
-      height: 60px;
-      top: 150px;
-      left: -200px;
-      animation: moveCloud 60s linear infinite;
-    }
-
-    .cloud1:before {
-      width: 60px;
-      height: 60px;
-      top: -20px;
-      left: 20px;
-    }
-
-    .cloud1:after {
-      width: 50px;
-      height: 50px;
-      top: -10px;
-      left: 60px;
-    }
-
-    .cloud2 {
-      width: 100px;
-      height: 50px;
-      top: 250px;
-      left: -300px;
-      animation: moveCloud 90s linear infinite;
-    }
-
-    .cloud2:before {
-      width: 40px;
-      height: 40px;
-      top: -15px;
-      left: 15px;
-    }
-
-    .cloud2:after {
-      width: 30px;
-      height: 30px;
-      top: -10px;
-      left: 50px;
-    }
-
-    @keyframes moveCloud {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(160vw); }
-    }
-
-    body.night .cloud,
-    body.night .cloud:before,
-    body.night .cloud:after {
-      background: #555;
-      opacity: 0.6;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px 0;
-      position: relative;
-      z-index: 2;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
+    body.night .sun { opacity: 0; pointer-events: none; }
+    body.night .moon { opacity: 1; }
+    @keyframes rotateSun { 0%{transform:rotate(0);}100%{transform:rotate(360deg);} }
+    .container { width: 90%; max-width: 900px; margin: 0 auto; padding: 40px 0; position: relative; z-index: 2; }
+    header { text-align: center; margin-bottom: 30px; }
     header h1 {
       font-size: 38px;
       color: #2c3e50;
       letter-spacing: 2px;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.6),
-                   2px 2px 10px rgba(0, 0, 0, 0.1);
+      text-shadow: 0 0 10px rgba(255,255,255,0.6), 2px 2px 10px rgba(0,0,0,0.1);
       animation: glow 3s infinite alternate;
       transition: color 1s ease, text-shadow 1s ease;
     }
-
-    body.night header h1 {
-      color: #aad4ff;
-      text-shadow: 0 0 10px rgba(170, 212, 255, 0.8),
-                   2px 2px 15px rgba(0, 0, 50, 0.5);
-    }
-
     @keyframes glow {
       from { text-shadow: 0 0 5px #fff, 0 0 10px #a0c8ff; }
       to { text-shadow: 0 0 20px #fff, 0 0 30px #4d90fe; }
     }
-
-    nav {
-      text-align: center;
-      margin-bottom: 30px;
-      position: relative;
-      z-index: 3;
-    }
-
+    nav { text-align: center; margin-bottom: 30px; }
     nav button {
       background: linear-gradient(135deg, #3498db, #6dd5fa);
       color: white;
@@ -192,195 +67,92 @@
       cursor: pointer;
       font-size: 16px;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     }
-
     nav button:hover {
       transform: translateY(-3px);
       background: linear-gradient(135deg, #2980b9, #57b3ff);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
     }
-
     main {
       padding: 25px;
-      background-color: rgba(255, 255, 255, 0.9);
+      background-color: rgba(255,255,255,0.9);
       border-radius: 20px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
       backdrop-filter: blur(6px);
-      transition: all 0.4s ease, background-color 1s ease, color 1s ease;
-      position: relative;
-      z-index: 2;
+      transition: all 0.4s ease;
       color: #333;
     }
-
-    body.night main {
-      background-color: rgba(20, 30, 50, 0.85);
-      color: #ddd;
-      box-shadow: 0 4px 20px rgba(0, 0, 60, 0.4);
+    .page { display: none; }
+    .page.active { display: block; animation: fadeIn 0.6s ease; }
+    @keyframes fadeIn { from {opacity:0; transform:translateY(10px);} to {opacity:1; transform:translateY(0);} }
+    section h2 { font-size: 28px; margin-bottom: 15px; border-left: 5px solid #3498db; padding-left: 10px; }
+    section p { font-size: 18px; line-height: 1.7; margin-bottom: 10px; color: #555; }
+    .portfolio-images img { max-width: 80%; border-radius: 10px; }
+    /* --- 新增監控樣式 --- */
+    .monitor-controls button {
+      background: #4CAF50; color: white; border: none;
+      padding: 10px 20px; margin: 10px 5px;
+      border-radius: 8px; cursor: pointer; transition: 0.3s;
     }
-
-    main:hover {
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    .monitor-controls button:hover { background: #45a049; }
+    #monitor-screen {
+      width: 100%; height: 300px;
+      background: #000; color: #0f0;
+      display: flex; justify-content: center; align-items: center;
+      border-radius: 10px; margin-top: 15px;
+      font-family: monospace;
     }
-
-    .page {
-      display: none;
+    /* --- 健康管理 --- */
+    .health-inputs input {
+      padding: 8px; margin: 5px;
+      border-radius: 6px; border: 1px solid #ccc;
+      width: 120px; text-align: center;
     }
-
-    .page.active {
-      display: block;
-      animation: fadeIn 0.6s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    section h2 {
-      font-size: 28px;
-      margin-bottom: 15px;
-      color: #2c3e50;
-      border-left: 5px solid #3498db;
-      padding-left: 10px;
-      transition: color 1s ease, border-color 1s ease;
-    }
-
-    body.night section h2 {
-      color: #aad4ff;
-      border-color: #75aaff;
-    }
-
-    section p {
-      font-size: 18px;
-      line-height: 1.7;
-      margin-bottom: 10px;
-      color: #555;
-      transition: color 1s ease;
-    }
-
-    body.night section p {
-      color: #ccc;
-    }
-
-    .portfolio-images {
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .portfolio-images img {
-      max-width: 80%;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-      transition: all 0.3s ease;
-    }
-
-    .portfolio-images img:hover {
-      transform: scale(1.05);
-    }
-
-    ul.social-links {
-      list-style: none;
-      padding: 0;
-      margin-top: 15px;
-    }
-
-    ul.social-links li {
-      margin: 15px 0;
-    }
-
-    ul.social-links a {
-      font-size: 18px;
-      color: #3498db;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    ul.social-links a:hover {
-      color: #1f78c1;
-      text-decoration: underline;
-    }
-
-    body.night ul.social-links a {
-      color: #a0c8ff;
-    }
-
-    body.night ul.social-links a:hover {
-      color: #75aaff;
-    }
-
-    @media (max-width: 768px) {
-      .container {
-        width: 95%;
-      }
-
-      header h1 {
-        font-size: 30px;
-      }
-
-      nav button {
-        font-size: 14px;
-        padding: 10px 20px;
-        margin: 5px;
-      }
-
-      .portfolio-images img {
-        max-width: 100%;
-      }
-    }
-
-    #toggleNight {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      background: #3498db;
-      border: none;
-      padding: 10px 18px;
-      color: white;
-      font-size: 16px;
-      border-radius: 20px;
+    .health-inputs button {
+      padding: 8px 15px;
+      border: none; border-radius: 6px;
+      background: #3498db; color: white;
       cursor: pointer;
-      z-index: 10;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      transition: background 0.3s ease;
-      user-select: none;
     }
-
-    #toggleNight:hover {
-      background: #2980b9;
+    .health-inputs button:hover { background: #2980b9; }
+    table {
+      width: 100%; margin-top: 15px;
+      border-collapse: collapse;
     }
-
+    table, th, td { border: 1px solid #ccc; }
+    th, td { padding: 8px; text-align: center; }
+    td button {
+      background: #e74c3c; border: none;
+      color: white; padding: 5px 10px;
+      border-radius: 5px; cursor: pointer;
+    }
+    td button:hover { background: #c0392b; }
+    #toggleNight {
+      position: fixed; top: 10px; right: 10px;
+      background: #3498db; border: none; padding: 10px 18px;
+      color: white; font-size: 16px; border-radius: 20px;
+      cursor: pointer; z-index: 10;
+    }
   </style>
 </head>
 <body>
-  <button id="toggleNight" title="切換夜晚模式">🌙 夜晚模式</button>
-
+  <button id="toggleNight">🌙 夜晚模式</button>
   <div class="sun"></div>
   <div class="moon"></div>
-
-  <div class="cloud cloud1"></div>
-  <div class="cloud cloud2"></div>
-
   <div class="container">
-    <header>
-      <h1>網路應用程式設計</h1>
-    </header>
-
+    <header><h1>網路應用程式設計</h1></header>
     <nav>
       <button onclick="showPage('home')">首頁</button>
       <button onclick="showPage('intro')">自我介紹</button>
       <button onclick="showPage('monitor')">遠端監控</button>
       <button onclick="showPage('health')">健康管理</button>
     </nav>
-
     <main>
       <section id="home" class="page active">
         <h2>歡迎來到網路應用程式設計課程</h2>
         <p>這裡是學習與展示網路應用程式設計相關技術的個人網站。</p>
-        <p>在這裡你可以學到各種程式設計有關的內容。</p>
         <div class="portfolio-images">
-          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="網路應用程式設計" />
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="網路應用程式設計"/>
         </div>
       </section>
 
@@ -388,56 +160,75 @@
         <h2>自我介紹</h2>
         <p>大家好，我是黃柏彰，進修部四子四乙，學號 C111252201。</p>
         <p>我畢業於 <strong>高雄高工汽車科</strong>，在校期間學習了許多與機械與技術相關的知識。</p>
-        <p>目前任職於科技廠的建廠工程現場，主要從事 <strong>配管工程</strong> 的工作，負責製作與安裝氣體配送管路系統。</p>
-        <p>因為我對工程領域非常有興趣，希望能學到更多實務上的經驗與知識，因此選擇投入這份工作。</p>
-        <p>未來也希望能結合所學與實務經驗，朝工程設計與專案管理發展。</p>
-
-        <h2>個人作品</h2>
-        <div class="portfolio-images">
-          <img src="err_0807.jpg" alt="個人作品展示圖片" />
-        </div>
-
-        <h2>社群媒體資訊</h2>
-        <ul class="social-links">
-          <li>Instagram: <a href="https://instagram.com/err_0807" target="_blank">@err_0807</a></li>
-        </ul>
+        <p>目前任職於科技廠的建廠工程現場，主要從事 <strong>配管工程</strong> 的工作。</p>
+        <p>未來希望能結合所學與實務經驗，朝工程設計與專案管理發展。</p>
       </section>
 
       <section id="monitor" class="page">
         <h2>遠端監控</h2>
-        <p>這裡是遠端監控功能說明內容。</p>
+        <div class="monitor-controls">
+          <button onclick="startMonitor()">開啟監控</button>
+          <button onclick="stopMonitor()">關閉監控</button>
+        </div>
+        <div id="monitor-screen">尚未開啟監控</div>
       </section>
 
       <section id="health" class="page">
         <h2>健康管理</h2>
-        <p>這裡是健康管理功能的內容。</p>
+        <div class="health-inputs">
+          <input type="number" id="systolic" placeholder="收縮壓 (mmHg)">
+          <input type="number" id="diastolic" placeholder="舒張壓 (mmHg)">
+          <button onclick="addPressure()">新增</button>
+        </div>
+        <table id="pressureTable">
+          <thead>
+            <tr><th>收縮壓</th><th>舒張壓</th><th>操作</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
       </section>
     </main>
   </div>
 
   <script>
     function showPage(pageId) {
-      const pages = document.querySelectorAll('.page');
-      pages.forEach(page => page.classList.remove('active'));
-      const page = document.getElementById(pageId);
-      if (page) {
-        page.classList.add('active');
-      }
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
     }
 
-    const toggleBtn = document.getElementById('toggleNight');
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('night');
-      if(document.body.classList.contains('night')) {
-        toggleBtn.textContent = '☀️ 白天模式';
-        toggleBtn.title = '切換白天模式';
-      } else {
-        toggleBtn.textContent = '🌙 夜晚模式';
-        toggleBtn.title = '切換夜晚模式';
-      }
-    });
+    // 夜間模式切換
+    const btn = document.getElementById("toggleNight");
+    btn.onclick = () => document.body.classList.toggle("night");
+
+    // 監控功能
+    function startMonitor() {
+      const screen = document.getElementById("monitor-screen");
+      screen.textContent = "🔴 監控中...";
+      screen.style.color = "#0f0";
+    }
+    function stopMonitor() {
+      const screen = document.getElementById("monitor-screen");
+      screen.textContent = "已關閉監控";
+      screen.style.color = "#f00";
+    }
+
+    // 血壓紀錄功能
+    function addPressure() {
+      const sys = document.getElementById("systolic").value;
+      const dia = document.getElementById("diastolic").value;
+      if (!sys || !dia) { alert("請輸入完整數值"); return; }
+      const table = document.getElementById("pressureTable").querySelector("tbody");
+      const row = table.insertRow();
+      row.insertCell(0).textContent = sys;
+      row.insertCell(1).textContent = dia;
+      const del = row.insertCell(2);
+      const btn = document.createElement("button");
+      btn.textContent = "刪除";
+      btn.onclick = () => row.remove();
+      del.appendChild(btn);
+      document.getElementById("systolic").value = "";
+      document.getElementById("diastolic").value = "";
+    }
   </script>
 </body>
 </html>
-
-
